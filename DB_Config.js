@@ -6,7 +6,6 @@ const dbConnection = () => {
       logging: false,
       timezone: "Africa/Cairo",
     });
-    console.log("DB connected successfully!");
     return sequelize;
   } catch (err) {
     return `There was an error: ${err}`;
