@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 const dbConnection = require("../DB_Config");
+const Book = require("./books");
+const Borrower = require("./borrowers");
 const borrowingProcesses = dbConnection();
 
 const Process = borrowingProcesses.define(
@@ -28,7 +30,7 @@ const Process = borrowingProcesses.define(
       type: DataTypes.DATE,
     },
     due_date: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     borrower_returned: {
@@ -56,5 +58,6 @@ borrowingProcesses
   .catch((error) => {
     console.error("Error creating table borrowing Processes:", error);
   });
-
+Process.belongsTo(Book, { foreignKey: "book_id" });
+Process.belongsTo(Borrower, { foreignKey: "borrower_id" });
 module.exports = Process;
