@@ -34,7 +34,7 @@ const createBook = async (req, res) => {
     }
     res.status(200).json(newBook);
   } catch (error) {
-    res.status(error.statusCode || 500).json({ err: error.errors[0].message });
+    res.status(error.statusCode || 500).json({ err: error });
   }
 };
 /*

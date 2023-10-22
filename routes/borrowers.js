@@ -4,7 +4,7 @@ const borrowerControllers = require("../controllers/borrowers");
 
 router.get("/get-all-borrowers", borrowerControllers.getAllBorrowers);
 router.post("/add-borrower", borrowerControllers.createBorrower);
-router.put("/update-borrower/:id", borrowerControllers.updateBorrower);
+router.patch("/update-borrower/:id", borrowerControllers.updateBorrower);
 router.delete("/delete-borrower/:id", borrowerControllers.deleteBorrower);
 router.post("/get-borrower", borrowerControllers.findBorrowerByEmail);
 
