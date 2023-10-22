@@ -18,7 +18,7 @@ List the prerequisites and dependencies needed to run your application. In your 
    Clone your project's Git repository to your local machine using the following command:
 
    ```shell
-   git clone <repository_url>
+   git clone https://github.com/HamdyIIbrahim/Library-Management-System.git
 
    ```
 
