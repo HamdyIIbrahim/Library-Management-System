@@ -3,7 +3,9 @@ const Borrower = require("../models/borrowers");
 const Process = require("../models/borrowingProcesses");
 const { Op } = require("sequelize");
 const { exportExcelSheet } = require("../shared/sharedFunction");
-
+/*
+  getDate function to make the date into YYYY-MM_DD format.
+*/
 const getDate = async (date) => {
   let formattedDate;
   if (date) {
@@ -18,7 +20,9 @@ const getDate = async (date) => {
   const newDate = `${year}-${month}-${day}`;
   return newDate;
 };
-
+/*
+  borrow book with book id , borrower id and due_date.
+*/
 const borrowBook = async (req, res) => {
   try {
     const { book_id, borrower_id, due_date } = req.body;
@@ -66,7 +70,9 @@ const borrowBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  get all checked out books.
+*/
 const checkedOutBooks = async (req, res) => {
   try {
     const allCheckedOutBooks = await Process.findAll({
@@ -91,7 +97,9 @@ const checkedOutBooks = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  get all borrower books they currently have by id .
+*/
 const checkBorrowerBooks = async (req, res) => {
   try {
     const borrowerId = req.params.id;
@@ -120,7 +128,9 @@ const checkBorrowerBooks = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  borrower return a book.
+*/
 const borrowerReturnBook = async (req, res) => {
   try {
     const { book_id, borrower_id, borrow_date } = req.body;
@@ -166,7 +176,9 @@ const borrowerReturnBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error });
   }
 };
-
+/*
+  reports of the borrowing process in a specific period .
+*/
 const borrowingProcessesReport = async (req, res) => {
   try {
     const { startDate, endDate } = req.body;
@@ -217,6 +229,9 @@ const borrowingProcessesReport = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error });
   }
 };
+/*
+  Exports all borrowing processes of the last month. .
+*/
 const borrowingProcessesLastMonth = async (req, res) => {
   try {
     const dateNow = new Date();

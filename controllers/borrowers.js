@@ -1,5 +1,7 @@
 const Borrower = require("../models/borrowers");
-
+/*
+  get all borrowers.
+*/
 const getAllBorrowers = async (req, res) => {
   try {
     const borrowers = await Borrower.findAll();
@@ -11,7 +13,9 @@ const getAllBorrowers = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  create new borrower.
+*/
 const createBorrower = async (req, res) => {
   try {
     const { name, email } = req.body;
@@ -30,7 +34,9 @@ const createBorrower = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  update borrower by id .
+*/
 const updateBorrower = async (req, res) => {
   try {
     const borrowerId = req.params.id;
@@ -51,7 +57,9 @@ const updateBorrower = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  delete borrower by id.
+*/
 const deleteBorrower = async (req, res) => {
   try {
     const borrowerId = req.params.id;
@@ -66,7 +74,9 @@ const deleteBorrower = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  find borrower by email .
+*/
 const findBorrowerByEmail = async (req, res) => {
   try {
     const { email } = req.body;

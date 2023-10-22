@@ -1,5 +1,7 @@
 const Book = require("../models/books");
 const { Op } = require("sequelize");
+
+//get all books
 const getAllBooks = async (req, res) => {
   try {
     const books = await Book.findAll();
@@ -11,7 +13,9 @@ const getAllBooks = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  create a new book 
+*/
 const createBook = async (req, res) => {
   try {
     const { title, author, isbn, quantity, shelf_location } = req.body;
@@ -33,7 +37,9 @@ const createBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  update book by id 
+*/
 const updateBook = async (req, res) => {
   try {
     const bookId = req.params.id;
@@ -59,7 +65,9 @@ const updateBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  delete book by id 
+*/
 const deleteBook = async (req, res) => {
   try {
     const id = req.params.id;
@@ -72,7 +80,9 @@ const deleteBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error.errors[0].message });
   }
 };
-
+/*
+  find book by title, author, or ISBN.
+*/
 const findBook = async (req, res) => {
   try {
     const searchValue = req.params.value;
