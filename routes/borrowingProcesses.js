@@ -5,7 +5,8 @@ const prossesController = require("../controllers/borrowingProcesses");
 router.post("/borrow-book", prossesController.borrowBook);
 router.get("/checked-out-books", prossesController.checkedOutBooks);
 router.get("/check-borrower-books/:id", prossesController.checkBorrowerBooks);
-router.put("/return-book", prossesController.borrowerReturnBook);
+router.patch("/return-book", prossesController.borrowerReturnBook);
+router.get("/get-overdue-books", prossesController.overDueBooks);
 router.post(
   "/get-report-in-specific-period",
   prossesController.borrowingProcessesReport

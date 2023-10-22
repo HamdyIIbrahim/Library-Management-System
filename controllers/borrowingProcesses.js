@@ -176,6 +176,41 @@ const borrowerReturnBook = async (req, res) => {
     res.status(error.statusCode || 500).json({ err: error });
   }
 };
+
+/*
+  get all list books that are overdue .
+*/
+
+const overDueBooks = async (req, res) => {
+  try {
+    const overDueBooksData = await Process.findAll({
+      include: [
+        {
+          model: Book,
+          attributes: ["title", "isbn"],
+          required: true,
+        },
+        {
+          model: Borrower,
+          attributes: ["name", "email"],
+          required: true,
+        },
+      ],
+      where: {
+        borrower_returned: false,
+        over_due_date: {
+          [Op.ne]: null,
+        },
+      },
+    });
+    if (!overDueBooksData) {
+      return res.status(404).json({ message: "no over Due books found" });
+    }
+    res.status(200).json(overDueBooksData);
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ err: error });
+  }
+};
 /*
   reports of the borrowing process in a specific period .
 */
@@ -283,6 +318,7 @@ module.exports = {
   checkedOutBooks,
   borrowerReturnBook,
   checkBorrowerBooks,
+  overDueBooks,
   borrowingProcessesReport,
   borrowingProcessesLastMonth,
 };
