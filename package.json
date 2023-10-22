@@ -7,10 +7,12 @@
     "node-cron": "^3.0.2",
     "nodemon": "^3.0.1",
     "sequelize": "^6.33.0",
+    "supertest": "^6.3.3",
     "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "node server.js",
+    "test": "jest",
     "dev": "nodemon server.js",
     "db-migrate-up": "db-migrate up -e dev",
     "db-migrate-down": "db-migrate down -e dev"
@@ -20,5 +22,9 @@
   "main": "server.js",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  }
 }

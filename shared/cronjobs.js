@@ -2,7 +2,7 @@ const cron = require("node-cron");
 const Process = require("../models/borrowingProcesses");
 
 const updateDueDateBooks = cron.schedule(
-  "58 14 * * *",
+  "19 03 * * *",
   //   "0 0 * * *",
   async () => {
     try {
@@ -18,4 +18,4 @@ const updateDueDateBooks = cron.schedule(
   }
 );
 
-updateDueDateBooks.start();
+module.exports = { updateDueDateBooks };

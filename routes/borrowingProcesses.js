@@ -10,5 +10,9 @@ router.post(
   "/get-report-in-specific-period",
   prossesController.borrowingProcessesReport
 );
+router.get(
+  "/export-borrowing-processes-last-month",
+  prossesController.borrowingProcessesLastMonth
+);
 
 module.exports = router;
